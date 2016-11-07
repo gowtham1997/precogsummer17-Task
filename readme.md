@@ -3,8 +3,8 @@
 The app is built in Flask.All subtasks are  carried out in the backend(Querying the database) and data is sent to frontend as a json upon a AJAX request.The data is later visualised using charts plotted using [chartist.js](https://gionkunz.github.io/chartist-js/).Below is the set of subtasks with description of how I attempted to solve them,their drawbacks and scope for improvement. 
 
 *	Collection of tweets:
-	The tweets are collected using Twython and the Twitter Streaming APIs[^1].
-	[^1]:If streaming responds with a 404 error,change system time and date to GMT timezone or update system time using ntp package.
+
+	The tweets are collected using Twython and the Twitter Streaming APIs.
 	Refrences used:[PSOSM](https://www.youtube.com/watch?v=lIVbvzwIgzw PSOSM NPTEL Videos),[Twitter Streaming API documentation](https://dev.twitter.com/streaming/overview)
 
 *	Location of Tweets:
@@ -20,8 +20,8 @@ The app is built in Flask.All subtasks are  carried out in the backend(Querying 
 
 *	List of Top 10 Hashtags being used in the stream:
 
-	Hashtags of a tweet can be accessed under `tweet['entities']['hashtags']` or with a regex pattern match.Each hashtag is encoded in *UTF-8* and converted to lowercase[^2] and stored in a python dictionary which also stores its frequency.This is later converted to a list of tuples and sorted in decreasing order of frequency to get top 10 tweets.
-	[^2]:The Hashtags are converted to lower case to avoid redundant hashtags(#Trump and #trump,etc).
+	Hashtags of a tweet can be accessed under `tweet['entities']['hashtags']` or with a regex pattern match.Each hashtag is encoded in *UTF-8* and converted to lowercase and stored in a python dictionary which also stores its frequency.This is later converted to a list of tuples and sorted in decreasing order of frequency to get top 10 tweets.
+
 
 *	Distribution of Original Tweets vs Retweeted Tweets:
 	
@@ -35,7 +35,7 @@ The app is built in Flask.All subtasks are  carried out in the backend(Querying 
 
 *	Distribution of Type of Tweet i.e. Text, Image, Text+Image:
 		
-	A tweet's text is assumed to be what's left after removing mentions,urls and hashtags from a tweet.Using [urlparse](https://docs.python.org/2/library/urlparse.html) urls are identified.Similarly,mentions and hashtags are identified.The length of remaining text is calculated to find out whether tweet contains text.Images are checked by finding the length of media field under entities - 'len(tweet['entities'].get('media', [])) >0'.
+	A tweet's text is assumed to be what's left after removing mentions,urls and hashtags from a tweet.Using [urlparse](https://docs.python.org/2/library/urlparse.html) urls are identified.Similarly,mentions and hashtags are identified.The length of remaining text is calculated to find out whether tweet contains text.Images are checked by finding the length of media field under entities - `len(tweet['entities'].get('media', [])) >0`
 
 	Refrences used:[stackoverflow](http://stackoverflow.com/questions/8376691/how-to-remove-hashtag-user-link-of-a-tweet-using-regular-expression)
 
