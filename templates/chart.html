@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<title>Twitter Text Analysis App</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+	<link rel="stylesheet" type="text/css" href="../static/style.css">
+	
+   
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+<body>
+	<header class="container-fluid">
+        <!-- Main component for a primary marketing message or call to action -->
+        <div class="container">
+            <div class="row row-header header-text">
+            	<div class="col-xs-12">
+            		<h1>
+                	US Elections Analysis With Twitter
+                	</h1>
+            	</div>               
+            </div>
+        </div>
+    </header>
+	<div class="content-box">
+		<div class="container" id="wrapper">
+			<div class="row row-content">
+                <div class="col-xs-12 map-control">
+                    <p style="padding:20px;"></p>
+                    <h2 align="center" >Locations of the Tweet</h2>
+                    <p style="padding:20px;"></p>
+					<div id="map">
+
+					</div> 
+                </div>
+            </div> 
+
+            <div class="row row-content">
+                <div class="col-xs-12 col-md-6 Chart1">
+                    <p style="padding:20px;"></p>
+                    <h2 align="center" >Distribution of Type of Tweet</h2>
+                    <p style="padding:20px;"></p>
+                    <div class="ct-chart ct-perfect-fourth" id="chart1">
+				
+					</div>	
+                </div>
+
+                <div class="col-xs-12 col-md-6 Chart2">
+                    <p style="padding:20px;"></p>
+                    <h2 align="center" >Distribution of Original Tweets vs Retweeted Tweets</h2>
+                    <p style="padding:20px;"></p>
+					<div class="ct-chart ct-perfect-fourth" id="chart2">
+					</div> 
+                </div>
+            </div> 
+			
+	<div class="row">
+		<div class="col-xs-12 col-md-5 panel-with-table">
+				<div class="panel panel-warning">
+				  <div class="panel-heading">Top 10 Hashtags</div>
+
+				  <table class="table table-striped">
+				    <thead>
+				      <tr>
+				      	<th>S.No</th>
+				        <th>Hashtags</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				      <tr>
+				      	<td>1</td>
+				      	<td id="No0"></td>
+				      </tr>
+				      <tr>
+				      	<td>2</td>
+				      	<td id="No1"></td>
+				      </tr>
+				      <tr>
+				      	<td>3</td>
+				      	<td id="No2"></td>
+				      </tr>
+				      <tr>
+				      	<td>4</td>
+				      	<td id="No3"></td>
+				      </tr>
+				      <tr>
+				      	<td>5</td>
+				      	<td id="No4"></td>
+				      </tr>
+				      <tr>
+				      	<td>6</td>
+				      	<td id="No5"></td>
+				      </tr>
+				      <tr>
+				      	<td>7</td>
+				      	<td id="No6"></td>
+				      </tr>
+				      <tr>
+				      	<td>8</td>
+				      	<td id="No7"></td>
+				      </tr>
+				      <tr>
+				      	<td>9</td>
+				      	<td id="No8"></td>
+				      </tr>
+				      <tr>
+				      	<td>10</td>
+				      	<td id="No9"></td>
+				      </tr>
+				    </tbody>
+				  </table>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-7 Chart3">
+                <p style="padding:20px;"></p>
+                <h2 align="center" >Distribution of Top 10 Hashtags</h2>
+                <p style="padding:20px;"></p>
+				<div class="ct-chart ct-perfect-fourth" id="chart3">
+				</div> 
+			</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 conclusion-box">
+			<p style="padding:20px;"></p>
+            <h2 align="center" >Who is more popular, Hillary or Trump?</h2>
+            <p style="padding:20px;"></p>
+            <div class="ct-chart ct-perfect-fourth Chart4" id="chart4">
+				
+			</div>	
+            <p>
+            	The popularity is predicted by number of <span id="imp-points">Unique user tweets,Retweets</span> in popular hashtags &mdash; <span class="twitter-entities">#trump,#maga,#draintheswamp,#trumppence2016,#clinton,#hillary,#imwithher,#strongertogether</span> and number of tweets with mentions - <span class="twitter-entities">@realDonaldTrump,@HillaryClinton</span>.
+            </p>
+		</div>
+		
+	</div>
+			
+
+			
+		</div>
+	</div>
+	
+
+
+	<script
+	  		src="http://code.jquery.com/jquery-3.1.1.min.js"
+	  		integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	  		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ 	<script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    
+  	
+	<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+	<script src="../static/scripts/script.js"></script>
+</body>
+</html>
