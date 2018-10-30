@@ -19,7 +19,7 @@ pyinotify==0.9.6
 pymongo==3.3.1
 pyOpenSSL==17.5.0
 ratelim==0.1.6
-requests==2.11.1
+requests>=2.20.0
 requests-oauthlib==0.7.0
 six==1.10.0
 twython==3.4.0
