@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 #: connecting to the database
 app.config['MONGO_DBNAME'] = 'twitterData'
-app.config['MONGO_URI'] = 'mongodb://gowtham:password1@ds1\
+app.config['MONGO_URI'] = 'mongodb://gowtham:******\
                                   43767.mlab.com:43767/twitterdata'
 
 mongo = PyMongo(app)
