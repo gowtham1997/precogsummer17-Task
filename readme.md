@@ -1,20 +1,20 @@
 # PreCog Summer Task A- US Elections textual analysis with twitter
 
-The app is built in Flask.All subtasks are  carried out in the backend(Querying the database) and data is sent to frontend as a json upon a AJAX request.The data is later visualised using charts plotted using [chartist.js](https://gionkunz.github.io/chartist-js/).Below is the set of subtasks with description of how I attempted to solve them,their drawbacks and scope for improvement. 
+The app is built with Flask. All subtasks are  carried out in the backend(Querying the database) and the data is sent to the  frontend as a json upon a AJAX request.The data is later visualised using charts plotted using [chartist.js](https://gionkunz.github.io/chartist-js/).Below is the set of subtasks with description of how I attempted to solve them,their drawbacks and scope for improvement. 
 
 *	Collection of tweets:
 
 	The tweets are collected using Twython and the Twitter Streaming APIs.
-	Refrences used:[PSOSM](https://www.youtube.com/watch?v=lIVbvzwIgzw PSOSM NPTEL Videos),[Twitter Streaming API documentation](https://dev.twitter.com/streaming/overview)
+	Refrences used:[PSOSM](https://www.youtube.com/watch?v=lIVbvzwIgzw),[Twitter Streaming API documentation](https://dev.twitter.com/streaming/overview)
 
 *	Location of Tweets:
 
-	The Location of the user is taken from coordinates field in tweet object amd plotted using 
+	The Location of the user is taken from the coordinates field in tweet object and plotted using 
 	[leaflat.js](http://leafletjs.com/).The coordiantes are stored in a [geoJSON](http://geojson.org/) format and sent to leaflat to mark them on the map.
 	Since,most of the users do not enable geo location,the results would not be useful for analysis.
 
 	An approximate location can be obtained by converting textual user's location(location specified at 	time of account creation) to coordinates using geocoding libraries like [geocoder](http://geocoder.readthedocs.io/) and plotting the results with leaflat.
-		Even though this method produced good results ,it was **slow** and this failed to recognise imaginary user locations like 'Heaven','Hell','Somewhere I Belong',etc.
+		Even though this method produced good results ,it was **slow** and this obviously failed to recognise imaginary user locations like 'Heaven','Hell','Somewhere I Belong',etc.
 
 	Refrences used:[Geolocation](https://marcobonzanini.com/2015/06/16/mining-twitter-data-with-python-and-js-part-7-geolocation-and-interactive-maps/)
 
@@ -43,5 +43,5 @@ The app is built in Flask.All subtasks are  carried out in the backend(Querying 
 		
 	The popularity is assumed to be sum of number of *Unique user tweets*,*Retweets* in popular hashtags -#trump,#maga,#draintheswamp,#trumppence2016,#clinton,#hillary,#imwithher,#strongertogether and *number of tweets with mentions* - @realDonaldTrump,@HillaryClinton
 	
-	A tweet with hashtags like '#trump','#clinton',etc can be used to support,criticize and make rude or sarcastic statements.A better analysis can be obtained by counting number of positive and negative words to get a sense of tweet(whether positive or negative) with respect to the tweet also taking sarcasm and not jokes into account.This can help predict popularity with more accuracy.
+	A tweet with hashtags like '#trump','#clinton',etc can be used to support, criticize and make rude or sarcastic statements. A better analysis can be obtained by doing a sentiment analysis to get a sense of tweet(whether positive or negative) also taking sarcasm and *not jokes* into account.This can help predict popularity with more accuracy.
 
