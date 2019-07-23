@@ -4,7 +4,7 @@ click==6.6
 cryptography==1.2.3
 decorator==4.0.10
 enum34==1.1.2
-Flask==0.12.3
+Flask==1.0
 Flask-PyMongo==0.4.1
 geocoder==1.17.4
 idna==2.0
