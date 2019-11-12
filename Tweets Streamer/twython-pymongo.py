@@ -2,10 +2,10 @@ from pymongo import MongoClient
 from twython import TwythonStreamer
 import json
 
-APP_KEY = '7qacVYGMB0rnpzpkgkcrlrNNw'
-APP_SECRET = '35gqUqsBh66itEsBsvodwxhamZtuy8ff4BNO2loZWpTlBP07X8'
-OAUTH_TOKEN = '793061748160860160-a0eH5Cz5RgGmhlrYYgd5KdrWnSdN6jc'
-OAUTH_TOKEN_SECRET = 'miURq2j0v2S3f0cl4bf8wdhxuKx9ritBTLKtllcYJ1WWs'
+APP_KEY = ''
+APP_SECRET = ''
+OAUTH_TOKEN = ''
+OAUTH_TOKEN_SECRET = ''
 
 connection = MongoClient()
 db = connection['twitterData']
