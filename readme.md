@@ -1,6 +1,6 @@
 # PreCog Summer Task A- US Elections textual analysis with twitter
 
-Project link: https://nameless-tor-84234.herokuapp.com/
+[Project link](https://nameless-tor-84234.herokuapp.com/) Please wait few minutes for the website to fully load.
 
 The app is built with Flask. All subtasks are  carried out in the backend(Querying the database) and the data is sent to the  frontend as a json upon a AJAX request.The data is later visualised using charts plotted using [chartist.js](https://gionkunz.github.io/chartist-js/).Below is the set of subtasks with description of how I attempted to solve them,their drawbacks and scope for improvement. 
 
